@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tablero_Activity"
+    android:id="@+id/linear"
+    android:orientation="vertical"
+    android:background="#5DC1B9">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:text="@string/group"
+        android:fontFamily="serif"
+        android:paddingLeft="80px"
+        android:paddingTop="25px"
+        android:textColor="@color/white"
+        android:background="#009d71"
+        />
+
+    <GridView
+        android:id="@+id/gridView_you"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center_horizontal"
+        android:horizontalSpacing="0dp"
+        android:numColumns="10"
+        android:verticalSpacing="0dp" />
+
+    <ImageView
+        android:id="@+id/carrier"
+        android:tag="carrier, 5"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <ImageView
+        android:id="@+id/battleship"
+        android:tag="battleship, 4"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <ImageView
+        android:id="@+id/cruiser"
+        android:tag="cruiser, 3"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <ImageView
+        android:id="@+id/submarine1"
+        android:tag="submarine, 3"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <ImageView
+        android:id="@+id/submarine2"
+        android:tag="submarine, 3"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <ImageView
+        android:id="@+id/destroyer1"
+        android:tag="destroyer, 2"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+
+    <ImageView
+        android:id="@+id/destroyer2"
+        android:tag="destroyer, 2"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@color/black"
+        android:longClickable="true"
+        />
+
+    <Button
+        android:id="@+id/empezar"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empezado"
+        />
+
+</LinearLayout>
