@@ -47,7 +47,11 @@ public class TableroAdapter extends BaseAdapter{
         }
 
         TextView textView = gridViewItem.findViewById(R.id.cuadrado);
-        textView.setText(String.valueOf(position));
+
+        char row = (char) (position / 10 + 'A');
+        int column = position % 10 + 1;
+
+        textView.setText(row + " - " + column);
 
         if (barco != null){
             if (isPositionInBarco(position)) {
@@ -78,4 +82,5 @@ public class TableroAdapter extends BaseAdapter{
         }
         return false;
     }
+
 }
