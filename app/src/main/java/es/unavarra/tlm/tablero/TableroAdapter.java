@@ -48,39 +48,13 @@ public class TableroAdapter extends BaseAdapter{
 
         TextView textView = gridViewItem.findViewById(R.id.cuadrado);
 
-        char row = (char) (position / 10 + 'A');
-        int column = position % 10 + 1;
-
-        textView.setText(row + " - " + column);
-
-        if (barco != null){
-            if (isPositionInBarco(position)) {
-                gridViewItem.setBackgroundColor(Color.YELLOW);
-            }
-        }
-
-//        // 设置奇偶行、列的背景颜色
-//        int row = position / boardSize;
-//        int col = position % boardSize;
+//        char row = (char) (position / 10 + 'A');
+//        int column = position % 10 + 1;
 //
-//        if ((row + col) % 2 == 0) {
-//            imageView.setBackgroundColor(Color.WHITE);
-//        } else {
-//            imageView.setBackgroundColor(Color.WHITE);
-//        }
+//        textView.setText(row + " - " + column);
 
+        textView.setText(String.valueOf(position));
         return textView;
-    }
-
-
-    // 判断当前位置是否在 barcoPositions 数组中
-    private boolean isPositionInBarco(int position) {
-        for (int barcoPosition : barco) {
-            if (position == barcoPosition) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }

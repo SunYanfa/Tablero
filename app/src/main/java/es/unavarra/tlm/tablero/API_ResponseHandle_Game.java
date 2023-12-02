@@ -87,6 +87,8 @@ public class API_ResponseHandle_Game extends AsyncHttpResponseHandler {
             fallo = "no tiene contenido";
         }
         Log.d(TAG, "onFailure: fallo " +fallo);
+
+        // Create the toast and set its position
         Toast toast = Toast.makeText(this.activity, fallo, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();

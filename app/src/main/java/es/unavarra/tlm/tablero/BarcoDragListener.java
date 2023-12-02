@@ -2,28 +2,23 @@ package es.unavarra.tlm.tablero;
 
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.icu.text.Transliterator;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.AdapterView;
+
 
 
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 import cz.msebera.android.httpclient.entity.StringEntity;
 
-import es.unavarra.tlm.tablero.API_Request_Game;
-
-public class imageDragListener implements View.OnDragListener {
+public class BarcoDragListener implements View.OnDragListener {
     private GridView gridView;
     private Activity activity;
     private  int game_id;
@@ -31,7 +26,7 @@ public class imageDragListener implements View.OnDragListener {
 
     private final String TAG="my";
 
-    public imageDragListener(GridView gridView, Activity activity, int gameId) {
+    public BarcoDragListener(GridView gridView, Activity activity, int gameId) {
         this.gridView = gridView;
         this.activity = activity;
         this.game_id = gameId;
@@ -77,8 +72,35 @@ public class imageDragListener implements View.OnDragListener {
                 float x = dragevent.getX();
                 float y = dragevent.getY();
 
-                float cellWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50f, this.activity.getResources().getDisplayMetrics());
 
+                // 获取 GridView 在布局中的 margin
+                int[] location = new int[2];
+                gridView.getLocationOnScreen(location);
+
+                int left = location[0]; // 左边界
+                int top = location[1]; // 上边界
+
+                int adjustedX = Math.round(x) - xInWindow;
+                int adjustedY = Math.round(y) - yInWindow;
+
+//                long position = gridView.pointToRowId((int) x, (int) y);
+                int position = gridView.pointToPosition(adjustedX, adjustedY);
+
+                Log.d("GridView", "onDrag: posicion " + position);
+//                int position = gridView.getPositionForView(gridView.findViewById((int) itemId));
+
+                if (position != AdapterView.INVALID_POSITION) {
+                    Log.d("GridView", "Clicked item at adapter position: " + position);
+                }
+
+                int firstVisiblePosition = gridView.getFirstVisiblePosition();
+                int lastVisiblePosition = gridView.getLastVisiblePosition();
+                Log.d("GridView", "onDrag: firstVisiblePosition " + firstVisiblePosition + " lastVisiblePosition " + lastVisiblePosition);
+
+
+//                float cellWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50f, this.activity.getResources().getDisplayMetrics());
+
+                float cellWidth = gridView.getColumnWidth();
                 Log.d(TAG, "onDrag: xwindow " + xInWindow + " ywindow " + yInWindow + " cellwidth " + cellWidth);
                 Log.d(TAG, "onDrag: touchx " + dragevent.getX() + " touchY " + dragevent.getY());
                 Log.d(TAG, "onDrag: colum " + ((x - xInWindow) / cellWidth));
@@ -86,8 +108,10 @@ public class imageDragListener implements View.OnDragListener {
                 int column = Math.round(((x - xInWindow) / cellWidth));
                 int row = Math.round(((y - yInWindow) / cellWidth));
 
-                Log.d(TAG, "onDrag: colum " + ((x - xInWindow) / cellWidth) + " int " + column);
-                Log.d(TAG, "onDrag:  row " + ((y - yInWindow) / cellWidth) + " int " + row);
+
+
+                Log.d("GridView", "onDrag: colum " + ((x - xInWindow) / cellWidth) + " int " + column);
+                Log.d("GridView", "onDrag:  row " + ((y - yInWindow) / cellWidth) + " int " + row);
                 char tmp = (char)(row + 'A');
                 Log.d(TAG, "onDrag: row" + tmp);
 

@@ -3,4 +3,8 @@
     <string name="group">DSCR 03</string>
     <string name="empezado">Empezar</string>
     <string name="carrier">carrier</string>
+    <string name="battleship">battleship</string>
+    <string name="cruiser">cruiser</string>
+    <string name="submarine">submarine</string>
+    <string name="destroyer">destro</string>
 </resources>
